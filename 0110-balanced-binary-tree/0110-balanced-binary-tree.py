@@ -18,7 +18,7 @@ class Solution:
         if root.right:
             if not self.isBalanced(root.right):
                 return False
-        
+
         return True
 
     def depth(self, node: Optional[TreeNode]) -> int:
@@ -26,11 +26,11 @@ class Solution:
             return 0
         elif not node.left and not node.right:
             return 1
-        
+
         left_depth, right_depth = 0, 0
         if node.left:
             left_depth = 1 + self.depth(node.left)
         if node.right:
             right_depth = 1 + self.depth(node.right)
-            
+
         return max(left_depth, right_depth)
