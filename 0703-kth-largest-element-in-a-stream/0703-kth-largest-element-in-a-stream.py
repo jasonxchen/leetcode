@@ -2,14 +2,20 @@ class KthLargest:
 
     def __init__(self, k: int, nums: List[int]):
         self.k = k
-        self.nums = nums
+        self.nums = sorted(nums)
+
+        while len(self.nums) > k:
+            self.nums.pop(0)
 
     def add(self, val: int) -> int:
-        self.nums.append(val)
+        if len(self.nums) < self.k:
+            self.nums.append(val)
+            self.nums = sorted(self.nums)
+        elif val > self.nums[0]:
+            self.nums[0] = val
+            self.nums = sorted(self.nums)
 
-        self.nums = sorted(self.nums)
-
-        return self.nums[len(self.nums) - self.k]
+        return self.nums[0]
 
 
 # Your KthLargest object will be instantiated and called as such:
