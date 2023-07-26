@@ -1,11 +1,13 @@
 class Solution:
     def climbStairs(self, n: int) -> int:
-        s1, s2, ways = 1, 1, 1
+        if n <= 3:
+            return n
 
-        for _ in range(n - 1):
-            ways = s1 + s2
-            temp = s1
-            s1 += s2
-            s2 = temp
+        n1, n2 = 2, 3
+
+        for _ in range(n - 3):
+            ways = n1 + n2
+            n1 = n2
+            n2 = ways
 
         return ways
