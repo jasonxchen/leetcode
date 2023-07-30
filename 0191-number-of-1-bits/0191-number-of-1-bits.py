@@ -3,8 +3,7 @@ class Solution:
         total = 0
 
         while n:
-            if n % 2 == 1:
-                total += 1
+            total += n % 2
             n = n >> 1
 
         return total
