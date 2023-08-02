@@ -4,6 +4,6 @@ class Solution:
 
         while n:
             total += n % 2
-            n = n >> 1
+            n >>= 1
 
         return total
