@@ -1,13 +1,10 @@
 class Solution:
     def reverseBits(self, n: int) -> int:
-        b = 0
-        counter = 32
-        while counter:
+        reversed = 0
+        for _ in range(32):
+            reversed <<= 1
             if n & 1:
-                b = b << 1
-                b += 1
-            else:
-                b = b << 1
-            n = n >> 1
-            counter -= 1
-        return b
+                reversed += 1
+            n >>= 1
+
+        return reversed
