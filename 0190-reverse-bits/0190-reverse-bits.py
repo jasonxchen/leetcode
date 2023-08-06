@@ -1,10 +1,9 @@
 class Solution:
     def reverseBits(self, n: int) -> int:
-        reversed = 0
+        res = 0
         for _ in range(32):
-            reversed <<= 1
-            if n & 1:
-                reversed += 1
+            res <<= 1
+            res = res | n & 1
             n >>= 1
 
-        return reversed
+        return res
