@@ -8,7 +8,7 @@ class Solution:
     def diameterOfBinaryTree(self, root: Optional[TreeNode]) -> int:
         max_diameter = 0
 
-        def find_height(root: TreeNode) -> int:
+        def find_height(root: Optional[TreeNode]) -> int:
             if not root:
                 return -1
 
