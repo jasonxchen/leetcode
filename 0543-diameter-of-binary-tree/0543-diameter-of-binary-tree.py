@@ -15,11 +15,9 @@ class Solution:
             nonlocal max_diameter
             left_height = find_height(root.left)
             right_height = find_height(root.right)
-            diameter = left_height + right_height + 2
 
             # update max_diameter
-            if diameter > max_diameter:
-                max_diameter = diameter
+            max_diameter = max(max_diameter, left_height + right_height + 2)
 
             return 1 + max(left_height, right_height)
 
