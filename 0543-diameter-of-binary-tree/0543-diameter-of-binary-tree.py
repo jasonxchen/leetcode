@@ -10,14 +10,14 @@ class Solution:
 
         def find_height(root: Optional[TreeNode]) -> int:
             if not root:
-                return -1
+                return 0
 
             nonlocal max_diameter
             left_height = find_height(root.left)
             right_height = find_height(root.right)
 
             # update max_diameter
-            max_diameter = max(max_diameter, left_height + right_height + 2)
+            max_diameter = max(max_diameter, left_height + right_height)
 
             return 1 + max(left_height, right_height)
 
