@@ -7,13 +7,15 @@ class Solution:
             else:
                 counts[n] += 1
 
-        ordered = []
-        for item in counts:
-            for i, num in enumerate(ordered):
-                if counts[item] < counts[num]:
-                    ordered.insert(i, item)
-                    break
-            if item not in ordered:
-                ordered.append(item)
+        bucket = [[] for _ in range(len(nums))]
+        for key, value in counts.items():
+            bucket[-value].append(key)
 
-        return ordered[-k:]
+        res = []
+        for arr in bucket:
+            k -= len(arr)
+            res += arr
+            if not k:
+                break
+
+        return res
