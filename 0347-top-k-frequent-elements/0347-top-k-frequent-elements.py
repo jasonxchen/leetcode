@@ -13,9 +13,6 @@ class Solution:
 
         res = []
         for arr in bucket:
-            k -= len(arr)
             res += arr
-            if not k:
-                break
-
-        return res
+            if len(res) == k:
+                return res
