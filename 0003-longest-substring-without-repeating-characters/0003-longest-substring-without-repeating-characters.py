@@ -1,22 +1,14 @@
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
-        # if not s:
-        #     return 0
-
-        s_array = [*s]
+        s_set = set()
         max_length = 0
+        l = 0
 
-        for i, letter in enumerate(s_array):
-            d = {letter: 1}
-            length = 1
-
-            for j in range(i + 1, len(s)):
-                if s_array[j] in d:
-                    break
-                else:
-                    d[s_array[j]] = 1
-                    length += 1
-
-            max_length = max(max_length, length)
+        for i, letter in enumerate(s):
+            while letter in s_set:
+                s_set.remove(s[l])
+                l += 1
+            s_set.add(letter)
+            max_length = max(max_length, i - l + 1)
 
         return max_length
