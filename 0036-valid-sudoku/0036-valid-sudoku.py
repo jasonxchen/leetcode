@@ -14,22 +14,23 @@ class Solution:
                     col_set = set()
                     col_count = 0
                     for i in range(9):
-                        if board[i][x] != '.':
-                            col_set.add(board[i][x])
+                        s = board[i][x]
+                        if s != '.':
+                            col_set.add(s)
                             col_count += 1
                     if len(col_set) < col_count:
                         return False
 
                 # do if top-left of sub_box
                 if x % 3 == 0 and y % 3 == 0:
-                    sub_box = [num, row[x + 1], row[x + 2], board[y + 1][x], board[y + 1][x + 1], board[y + 1][x + 2], board[y + 2][x], board[y + 2][x + 1], board[y + 2][x + 2]]
-
                     box_set = set()
                     box_count = 0
-                    for s in sub_box:
-                        if s != '.':
-                            box_set.add(s)
-                            box_count += 1
+                    for i in range(3):
+                        for j in range(3):
+                            s = board[x + i][y + j]
+                            if s != '.':
+                                box_set.add(s)
+                                box_count += 1
                     if len(box_set) < box_count:
                         return False
 
