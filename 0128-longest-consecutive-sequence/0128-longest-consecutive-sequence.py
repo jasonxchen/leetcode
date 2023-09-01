@@ -3,12 +3,10 @@ class Solution:
         if not nums:
             return 0
 
-        temp = set(nums)
-        nums = sorted(list(temp))
-
+        nums = sorted(list(set(nums)))
         longest = 0
         curr = 1
-        print(nums)
+
         for i in range(len(nums) - 1):
             if nums[i + 1] - nums[i] == 1:
                 curr += 1
