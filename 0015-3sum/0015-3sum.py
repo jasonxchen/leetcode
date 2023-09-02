@@ -5,8 +5,7 @@ class Solution:
 
         for i, num in enumerate(nums):
             if i == 0 or num != nums[i - 1]:
-                l = i + 1
-                r = len(nums) - 1
+                l, r = i + 1, len(nums) - 1
                 while l < r:
                     three_sum = num + nums[l] + nums[r]
                     if three_sum < 0:
@@ -16,6 +15,7 @@ class Solution:
                     else:
                         triplets.append([num, nums[l], nums[r]])
                         l += 1
+                        r -= 1
                         while nums[l] == nums[l - 1] and l < r:
                             l += 1
 
