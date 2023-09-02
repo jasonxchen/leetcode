@@ -1,6 +1,6 @@
 class Solution:
     def threeSum(self, nums: List[int]) -> List[List[int]]:
-        nums = sorted(nums) #
+        nums.sort()
         triplets = []
 
         for i, num in enumerate(nums):
@@ -8,14 +8,15 @@ class Solution:
                 l = i + 1
                 r = len(nums) - 1
                 while l < r:
-                    if num + nums[l] + nums[r] < 0:
+                    three_sum = num + nums[l] + nums[r]
+                    if three_sum < 0:
                         l += 1
-                    elif num + nums[l] + nums[r] > 0:
+                    elif three_sum > 0:
                         r -= 1
                     else:
                         triplets.append([num, nums[l], nums[r]])
                         l += 1
-                        while nums[l] == nums[l -1] and l < r: #
+                        while nums[l] == nums[l - 1] and l < r:
                             l += 1
 
         return triplets
