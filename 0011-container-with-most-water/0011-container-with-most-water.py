@@ -11,4 +11,3 @@ class Solution:
             max_area = max(max_area, min(height[l], height[r]) * (r - l))
 
         return max_area
-# resub for better time
