@@ -1,17 +1,15 @@
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
         counts = {}
-        for n in nums:
-            if n not in counts:
-                counts[n] = 1
-            else:
-                counts[n] += 1
-
         bucket = [[] for _ in range(len(nums))]
+        res = []
+
+        for n in nums:
+            counts[n] = counts.get(n, 0) + 1
+
         for key, value in counts.items():
             bucket[-value].append(key)
 
-        res = []
         for arr in bucket:
             res += arr
             if len(res) == k:
