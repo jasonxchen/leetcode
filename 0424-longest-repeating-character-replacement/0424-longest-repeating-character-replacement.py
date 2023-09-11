@@ -1,23 +1,16 @@
 class Solution:
     def characterReplacement(self, s: str, k: int) -> int:
-        l, r = 0, 0
-        counts = {s[r]: 1}
-        max_count = 1
-        max_count_curr = True
-        max_length = 1
+        l = 0
+        counts = {}
+        max_count = 0
+        max_length = 0
 
-        while r < len(s):
+        for r in range(len(s)):
+            counts[s[r]] = counts.get(s[r], 0) + 1
+            max_count = max(max_count, counts[s[r]])
             if r - l + 1 - max_count - k <= 0:
                 max_length = max(max_length, r - l + 1)
-                r += 1
-                if r < len(s):
-                    counts[s[r]] = counts.get(s[r], 0) + 1
-                    if counts[s[r]] > max_count:
-                        max_count = counts[s[r]]
-                        max_count_curr = True
             else:
-                if counts[s[l]] == max_count_curr:
-                    max_count_curr = False
                 counts[s[l]] -= 1
                 l += 1
 
